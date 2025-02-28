@@ -14,14 +14,20 @@ function Login() {
     try {
       const response = await login({ email, password });
       authenticate(response.data.user, response.data.token);
-      navigate("/dashboard");
+      navigate("/home");
     } catch (error) {
-      console.error("Erreur de connexion", error.response?.data?.message || error.message);
+      console.error(
+        "Erreur de connexion",
+        error.response?.data?.message || error.message
+      );
     }
   };
 
   return (
-    <form onSubmit={handleSubmit} className="max-w-md mx-auto p-6 bg-[#FAF3E0] shadow-md rounded-lg space-y-4">
+    <form
+      onSubmit={handleSubmit}
+      className="max-w-md mx-auto p-6 bg-[#FAF3E0] shadow-md rounded-lg space-y-4"
+    >
       <input
         type="email"
         placeholder="Email"

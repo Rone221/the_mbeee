@@ -15,12 +15,18 @@ function Register() {
       await register({ nomComplet, email, password, role });
       navigate("/login");
     } catch (error) {
-      console.error("Erreur d'inscription", error.response?.data?.message || error.message);
+      console.error(
+        "Erreur d'inscription",
+        error.response?.data?.message || error.message
+      );
     }
   };
 
   return (
-    <form onSubmit={handleSubmit} className="max-w-md mx-auto p-6 bg-[#FAF3E0] shadow-md rounded-lg space-y-4">
+    <form
+      onSubmit={handleSubmit}
+      className="max-w-md mx-auto p-6 bg-[#FAF3E0] shadow-md rounded-lg space-y-4"
+    >
       <input
         type="text"
         placeholder="Nom complet"
@@ -58,7 +64,7 @@ function Register() {
         type="submit"
         className="w-full p-3 bg-[#4CAF50] text-white rounded-md hover:bg-[#6B4226] transition duration-300"
       >
-        S'inscrire
+        Sinscrire
       </button>
     </form>
   );
