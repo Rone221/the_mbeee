@@ -1,16 +1,15 @@
-// 📂 src/components/ProtectedRoute.jsx
-import { Navigate } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 
+const ProtectedRoute = ({ roleRequired }) => {
+  const { user } = useAuth();
 
-const ProtectedRoute = ({ children }) => {
-  const { isAuthenticated } = useAuth();
-
-  if (!isAuthenticated) {
+  if (!user || user.role !== roleRequired) {
+    console.log("🚫 Accès refusé. Rôle manquant ou utilisateur non connecté.");
     return <Navigate to="/login" />;
   }
 
-  return children;
+  return <Outlet />;
 };
 
 export default ProtectedRoute;
